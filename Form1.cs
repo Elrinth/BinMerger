@@ -45,6 +45,11 @@ namespace BinMerger
 
     private void btnStart_Click(object sender, EventArgs e)
     {
+      btnClearLog.Enabled = false;
+      txtLog.Invoke((MethodInvoker)delegate ()
+      {
+        txtLog.AppendText("Start initiated... Please wait while scanning folder for .cue files.\r\n");
+      });
       DateTime startTime = DateTime.Now;
 
 
@@ -242,6 +247,13 @@ namespace BinMerger
 
         countCueFilesProcessed++;
       }
+      if (binFilesRemoved != 0)
+      {
+        txtLog.Invoke((MethodInvoker)delegate ()
+        {
+          txtLog.AppendText("Deleted " + binFilesRemoved + " old .bin files!\r\n");
+        });
+      }
 
       TimeSpan diff = DateTime.Now - startTime;
 
@@ -249,13 +261,7 @@ namespace BinMerger
       {
         txtLog.AppendText("Finished combining " + countCueFilesProcessed + " .bin/.cue files after " + Math.Round(diff.TotalSeconds, 2) + " seconds!\r\n");
       });
-      if (binFilesRemoved != 0)
-      {
-        txtLog.Invoke((MethodInvoker)delegate ()
-        {
-          txtLog.AppendText("Deleted " + binFilesRemoved + " .bin files!\r\n");
-        });
-      }
+      
 
       btnClearLog.Enabled = true;
     }
@@ -269,6 +275,14 @@ namespace BinMerger
       {
         btnStart.Enabled = false;
       }
+    }
+
+    private void btnClearLog_Click(object sender, EventArgs e)
+    {
+      txtLog.Invoke((MethodInvoker)delegate ()
+      {
+        txtLog.ResetText();
+      });
     }
   }
 }

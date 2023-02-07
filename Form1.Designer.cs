@@ -102,6 +102,7 @@
       this.btnClearLog.TabIndex = 6;
       this.btnClearLog.Text = "Clear Log";
       this.btnClearLog.UseVisualStyleBackColor = true;
+      this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
       // 
       // label2
       // 
