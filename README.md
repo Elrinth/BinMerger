@@ -1,6 +1,6 @@
 # BinMerger
-Merges all .bin/.cue files so there is a solo .bin with the .cue file instead of multiple bin files.
-Goes thru all subdirectories for you. Deletes the old files.
+Merges all of your .bin/.cue images in a specific folder (and all subdirs) so there is a solo .bin with the .cue file instead of multiple bin files.
+Goes thru all subdirectories for you. Will delete the old files automagically.
 
 Uses https://github.com/putnam/binmerge to do the actual work.
 
